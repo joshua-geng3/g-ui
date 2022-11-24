@@ -102,5 +102,3 @@ export class ClassList {
 export default function (el: Element): ClassList {
   return new ClassList(el);
 }
-
-console.log(indexOf([1, 2, 3, 4, 5, 6], 1))
