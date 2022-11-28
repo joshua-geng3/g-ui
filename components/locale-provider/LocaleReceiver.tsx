@@ -1,4 +1,4 @@
-import type { VNodeTypes, PropType, computedRef, Ref } from 'vue';
+import type { VNodeTypes, PropType, ComputedRef, Ref } from 'vue';
 import { unref, inject, defineComponent, computed } from 'vue';
 import defaultLocaleData from './default';
 import type { Locale } from '.';
@@ -36,6 +36,49 @@ export default defineComponent({
     const localeData = inject<LocaleReceiverContext>('localeData', {});
     const locale = computed(() => {
       const { componentName = 'global', defaultLocale } = props;
+      const locale = defaultLocale || (defaultLocale as LocaleInterface)[componentName || 'global'];
+      const { antLocale } = localeData;
+
+      const localeFromContext = componentName && antLocale ? antLocale[componentName] : {};
+      return {
+        ...(typeof locale === 'function' ? locale() : locale),
+        ...(localeFromContext || {}),
+      };
     });
-  }
-})
+    const localeCode = computed(() => {
+      const { antLocale } = localeData;
+      const localeCode = antLocale && antLocale.locale;
+      // Has use LocaleProvide but didn't set locale
+      if (antLocale && antLocale.exist && !localeCode) {
+        return defaultLocaleData.locale;
+      }
+      return localeCode;
+    });
+    return () => {
+      const children = props.children || slots.default;
+      const { antLocale } = localeData;
+      return children?.(locale.value, localeCode.value, antLocale);
+    };
+  },
+});
+
+export function useLocaleReceiver<T extends LocaleComponentName>(
+  componentName: T,
+  defaultLocale?: Locale[T] | Function | ComputedRef<Locale[T] | Function>,
+  propsLocale?: Ref<Locale[T]>,
+): [ComputedRef<Locale[T]>] {
+  const localeData = inject<LocaleReceiverContext>('locale', {} as LocaleReceiverContext);
+  const componentLocale = computed<Locale[T]>(() => {
+    const { antLocale } = localeData;
+    const locale =
+      unref(defaultLocale) || (defaultLocale as LocaleInterface)[componentName || 'global'];
+    const localeFromContext = componentName && antLocale ? antLocale[componentName] : {};
+
+    return {
+      ...(typeof locale === 'function' ? (locale as Function)() : locale),
+      ...(localeFromContext || {}),
+      ...(unref(propsLocale) || {}),
+    };
+  });
+  return [componentLocale];
+}
