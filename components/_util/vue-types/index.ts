@@ -32,12 +32,12 @@ PropTypes.extend([
   },
 ]);
 
-export function withUndefined<T extends {default?: any}>(type: T): T {
+export function withUndefined<T extends { default?: any }>(type: T): T {
   type.default = undefined;
-  return type
+  return type;
 }
 export default PropTypes as VueTypesInterface & {
   readonly looseBool: VueTypeValidableDef<boolean>;
   readonly style: VueTypeValidableDef<CSSProperties>;
   readonly VueNode: VueTypeValidableDef<VueNode>;
-}
+};

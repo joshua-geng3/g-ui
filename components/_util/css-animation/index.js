@@ -166,7 +166,7 @@ cssAnimation.setTransition = (node, p, value) => {
   property = property || '';
   capitalPrefixes.forEach(prefix => {
     node.style[`${prefix}Transition${property}`] = v;
-  })
+  });
 };
 
 cssAnimation.isCssAnimationSupported = isCssAnimationSupported;

@@ -28,7 +28,7 @@ export function call(
 }
 
 export function warningOnce(valid: boolean, message: string) {
-  call(warning, valid, message)
+  call(warning, valid, message);
 }
 
 export function noteOnce(valid: boolean, message: string) {

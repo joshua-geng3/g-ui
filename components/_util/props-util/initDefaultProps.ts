@@ -7,13 +7,13 @@ const initDefaultProps = <T>(
     [K in keyof T]?: T[K] extends VueTypeValidableDef<infer U>
       ? U
       : T[K] extends VueTypeDef<infer U>
-        ? U
-        : T[K] extends { type: PropType<infer U> }
-          ? U
-          : any;
+      ? U
+      : T[K] extends { type: PropType<infer U> }
+      ? U
+      : any;
   },
 ): T => {
-  const propTypes: T = {...types};
+  const propTypes: T = { ...types };
   Object.keys(defaultProps).forEach(k => {
     const prop = propTypes[k] as VueTypeValidableDef;
     if (prop) {

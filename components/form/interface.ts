@@ -7,7 +7,7 @@ export type NamePath = string | number | InternalNamePath;
 
 export type StoreValue = any;
 export interface Store {
-  [name: string]: StoreValue
+  [name: string]: StoreValue;
 }
 
 export interface Meta {
@@ -200,6 +200,5 @@ export interface ValidateMessages {
   };
   pattern?: {
     mismatch?: ValidateMessage;
-  }
+  };
 }
-

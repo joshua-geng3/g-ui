@@ -11,7 +11,7 @@ export const requestAnimationTimeout = (callback, delay = 0) => {
     if (Date.now() - start >= delay) {
       callback.call();
     } else {
-      frame.id = raf(timeout)
+      frame.id = raf(timeout);
     }
   }
 
@@ -20,4 +20,4 @@ export const requestAnimationTimeout = (callback, delay = 0) => {
   };
 
   return frame;
-}
+};

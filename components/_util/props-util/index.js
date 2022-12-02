@@ -407,7 +407,7 @@ export const getTextFromElement = ele => {
     return ele[0].children;
   }
   return ele;
-}
+};
 
 export {
   splitAttrs,

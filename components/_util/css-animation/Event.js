@@ -13,7 +13,7 @@ const START_EVENT_NAME_MAP = {
     MozAnimation: 'mozAnimationStart',
     OAnimation: 'oAnimationStart',
     msAnimation: 'MSAnimationStart',
-  }
+  },
 };
 
 const END_EVENT_NAME_MAP = {
