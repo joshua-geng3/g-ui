@@ -1,5 +1,5 @@
-import type { UnwrapRef, App, Plugin, WatchStopHandle } from "vue";
-import { computed, reactive, provide, defineComponent, watch, watchEffect } from "vue";
+import type { UnwrapRef, App, Plugin, WatchStopHandle } from 'vue';
+import { computed, reactive, provide, defineComponent, watch, watchEffect } from 'vue';
 import defaultRenderEmpty from './renderEmpty';
 import type { RenderEmptyHandler } from './renderEmpty';
 import type { Locale } from '../locale-provider';
@@ -33,5 +33,181 @@ export const globalConfigForApi = reactive<
 watchEffect(() => {
   Object.assign(globalConfigForApi, globalConfigByCom, globalConfigBySet);
   globalConfigForApi.prefixCls = getGlobalPrefixCls();
-  globalConfigForApi.get
+  globalConfigForApi.getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls
+      ? `${globalConfigForApi.prefixCls}-${suffixCls}`
+      : globalConfigForApi.prefixCls;
+  };
+  globalConfigForApi.getRootPrefixCls = (rootPrefixCls?: string, customizePrefixCls?: string) => {
+    // Customize rootPrefixCls is first priority
+    if (rootPrefixCls) {
+      return rootPrefixCls;
+    }
+
+    // If Global prefixCls provided, use this
+    if (globalConfigForApi.prefixCls) {
+      return globalConfigForApi.prefixCls;
+    }
+
+    // [Legacy] If customize prefixCls provided, we cut it to get the prefixCls
+    if (customizePrefixCls && customizePrefixCls.includes('-')) {
+      return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1');
+    }
+
+    // Fallback to default prefixCls
+    return getGlobalPrefixCls();
+  };
 });
+
+type GlobalConfigProviderProps = {
+  prefixCls?: MayBeRef<ConfigProviderProps['prefixCls']>;
+  getPopupContainer?: ConfigProviderProps['getPopupContainer'];
+};
+
+let stopWatchEffect: WatchStopHandle;
+const setGlobalConfig = (params: GlobalConfigProviderProps & { theme?: Theme }) => {
+  if (stopWatchEffect) {
+    stopWatchEffect();
+  }
+  stopWatchEffect = watchEffect(() => {
+    Object.assign(globalConfigBySet, reactive(params));
+    Object.assign(globalConfigForApi, reactive(params));
+  });
+  if (params.theme) {
+    registerTheme(getGlobalPrefixCls(), params.theme);
+  }
+};
+
+export const globalConfig = () => ({
+  getPrefixCls: (suffixCls?: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls ? `${getGlobalPrefixCls()}-${suffixCls}` : getGlobalPrefixCls();
+  },
+  getRootPrefixCls: (rootPrefixCls?: string, customizePrefixCls?: string) => {
+    // Customize rootPrefixCls is first priority
+    if (rootPrefixCls) {
+      return rootPrefixCls;
+    }
+
+    // If Global prefixCls provided, use this
+    if (globalConfigForApi.prefixCls) {
+      return globalConfigForApi.prefixCls;
+    }
+
+    // [Legacy] If customize prefixCls provided, we cut it to get the prefixCls
+    if (customizePrefixCls && customizePrefixCls.includes('-')) {
+      return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1');
+    }
+  },
+});
+
+const ConfigProvider = defineComponent({
+  compatConfig: { MODE: 3 },
+  name: 'AConfigProvider',
+  inheritAttrs: false,
+  props: configProviderProps(),
+  set(props, { slots }) {
+    const getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
+      const { prefixCls = 'ant' } = props;
+
+      if (customizePrefixCls) return customizePrefixCls;
+      return suffixCls ? `${prefixCls}-${suffixCls}` : prefixCls;
+    };
+
+    const renderEmptyComponent = (name?: string) => {
+      const renderEmpty = (props.renderEmpty ||
+        slots.renderEmpty ||
+        defaultRenderEmpty) as RenderEmptyHandler;
+      return renderEmpty(name);
+    };
+
+    const getPrefixClsWrapper = (suffixCls: string, customizePrefixCls?: string) => {
+      const { prefixCls } = props;
+
+      if (customizePrefixCls) return customizePrefixCls;
+
+      const mergedPrefixCls = prefixCls || getPrefixCls('');
+
+      return suffixCls ? `${mergedPrefixCls}-${suffixCls}` : mergedPrefixCls;
+    };
+
+    const configProvider = reactive({
+      ...props,
+      getPrefixCls: getPrefixClsWrapper,
+      renderEmpty: renderEmptyComponent,
+    });
+    Object.keys(props).forEach(key => {
+      watch(
+        () => props[key],
+        () => {
+          configProvider[key] = props[key];
+        },
+      );
+    });
+    if (!props.notUpdateGlobalConfig) {
+      Object.assign(globalConfigByCom, configProvider);
+      watch(configProvider, () => {
+        Object.assign(globalConfigByCom, configProvider);
+      });
+    }
+    const validateMessagesRef = computed(() => {
+      let validateMessages: ValidateMessages = {};
+
+      if (props.locale) {
+        validateMessages =
+          props.locale.Form?.defaultValidateMessages ||
+          defaultLocale.Form?.defaultValidateMessages ||
+          {};
+      }
+      if (props.form && props.form.validateMessages) {
+        validateMessages = { ...validateMessages, ...props.form.validateMessages };
+      }
+      return validateMessages;
+    });
+    useProvideGlobalForm({ validateMessages: validateMessagesRef });
+    provide('configProvider', configProvider);
+
+    const renderProvider = (legacyLocale: Locale) => {
+      return (
+        <LocaleProvider locale={props.locale || legacyLocale} ANT_MARK__={ANT_MARK}>
+          {slots.default?.()}
+        </LocaleProvider>
+      );
+    };
+
+    watchEffect(() => {
+      if (props.direction) {
+        message.config({
+          rtl: props.direction === 'rtl',
+        });
+        notification.config({
+          rtl: props.direction === 'rtl',
+        });
+      }
+    });
+
+    return () => (
+      <LocaleProvider children={(_, __, legacyLocale) => renderProvider(legacyLocale as Locale)} />
+    );
+  },
+});
+
+export const defaultConfigProvider: UnwrapRef<ConfigProviderProps> = reactive({
+  getPrefixCls: (suffixCls: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls ? `ant-${suffixCls}` : 'ant';
+  },
+  renderEmpty: defaultRenderEmpty,
+  direction: 'ltr',
+});
+
+ConfigProvider.config = setGlobalConfig;
+ConfigProvider.install = function (app: App) {
+  app.component(ConfigProvider.name, ConfigProvider);
+};
+
+export default ConfigProvider as typeof ConfigProvider &
+  Plugin & {
+    readonly config: typeof setGlobalConfig;
+  };
