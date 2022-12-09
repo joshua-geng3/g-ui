@@ -188,7 +188,7 @@ const ConfigProvider = defineComponent({
     });
 
     return () => (
-      <LocaleProvider children={(_, __, legacyLocale) => renderProvider(legacyLocale as Locale)} />
+      <LocaleReceiver children={(_, __, legacyLocale) => renderProvider(legacyLocale as Locale)} />
     );
   },
 });
