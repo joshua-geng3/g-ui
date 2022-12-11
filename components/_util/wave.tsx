@@ -1,9 +1,9 @@
 import { nextTick, defineComponent, getCurrentInstance, onMounted, onBeforeMount } from 'vue';
-import TransitionEvents from "./css-animation/Event";
+import TransitionEvents from './css-animation/Event';
 import raf from './raf';
-import { findDOMNode } from "./props-util";
+import { findDOMNode } from './props-util';
 import useConfigInject from './hooks/useConfigInject';
-let styleForPesudo: HTMLStyleElement；
+let styleForPesudo: HTMLStyleElement;
 
 // Where el is the DOM element you'd like to test for visibility
 function isHidden(element: HTMLElement) {
@@ -104,5 +104,76 @@ export default defineComponent({
       TransitionEvents.addStartEventListener(node, onTransitionStart);
       TransitionEvents.addEndEventListener(node, onTransitionEnd);
     };
-  }
-})
+    const resetEffect = (node: HTMLElement) => {
+      if (!node || node === extraNode || !(node instanceof Element)) {
+        return;
+      }
+      const { insertExtraNode } = props;
+      const attributeName = getAttributeName();
+      node.setAttribute(attributeName, 'false');
+      if (styleForPesudo) {
+        styleForPesudo.innerHTML = '';
+      }
+      if (insertExtraNode && extraNode && node.contains(extraNode)) {
+        node.removeChild(extraNode);
+      }
+      TransitionEvents.removeStartEventListener(node, onTransitionStart);
+      TransitionEvents.removeEndEventListener(node, onTransitionEnd);
+    };
+    const bindAnimationEvent = (node: HTMLElement) => {
+      if (
+        !node ||
+        !node.getAttribute ||
+        node.getAttribute('disabled') ||
+        node.className.indexOf('disabled') >= 0
+      ) {
+        return;
+      }
+      const newClick = (e: MouseEvent) => {
+        // Fix radio button click twice
+        if ((e.target as any).tagName === 'INPUT' || isHidden(e.target as HTMLElement)) {
+          return;
+        }
+        resetEffect(node);
+        // Get wave color from target
+        const waveColor =
+          getComputedStyle(node).getPropertyValue('border-top-color') || // Firefox Compatible
+          getComputedStyle(node).getPropertyValue('border-color') ||
+          getComputedStyle(node).getPropertyValue('background-color');
+        clickWaveTimeoutId = setTimeout(() => onClick(node, waveColor));
+        raf.cancel(animationStartId);
+        animationStart = true;
+
+        // Render to trigger transition event cost 3 frames. Let's delay 10 frames to reset this.
+        animationStartId = raf(() => {
+          animationStart = false;
+        }, 10);
+      };
+      node.addEventListener('click', newClick, true);
+      return {
+        cancel: () => {
+          node.removeEventListener('click', newClick, true);
+        },
+      };
+    };
+    onMounted(() => {
+      nextTick(() => {
+        const node = findDOMNode(instance);
+        if (node.nodeType !== 1) {
+          return;
+        }
+        eventIns = bindAnimationEvent(node);
+      });
+    });
+    onBeforeMount(() => {
+      if (eventIns) {
+        eventIns.cancel();
+      }
+      clearTimeout(clickWaveTimeoutId);
+      isUnmounted = true;
+    });
+    return () => {
+      return slots.default?.()[0];
+    };
+  },
+});

@@ -1,11 +1,10 @@
 import type { RequiredMark } from '../../form/Form';
-import type { ComputedRef, UnwrapRef } from "vue";
-import { computed, inject } from "vue";
+import type { ComputedRef, UnwrapRef } from 'vue';
+import { computed, inject } from 'vue';
 import type { ConfigProviderProps, CSPConfig, Direction, SizeType } from '../../config-provider';
 import { defaultConfigProvider } from '../../config-provider';
 import type { VueNode } from '../type';
 import type { ValidateMessages } from '../../form/interface';
-
 
 export default (
   name: string,
@@ -80,5 +79,5 @@ export default (
     getPrefixCls: configProvider.getPrefixCls,
     autocomplete,
     csp,
-  }
-}
+  };
+};

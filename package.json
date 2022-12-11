@@ -37,6 +37,8 @@
     "vue-eslint-parser": "^8.0.0"
   },
   "dependencies": {
+    "@ant-design/colors": "^6.0.0",
+    "@ant-design/icons-vue": "^6.1.0",
     "lodash-es": "^4.17.21",
     "vue-types": "^4.2.1"
   }
