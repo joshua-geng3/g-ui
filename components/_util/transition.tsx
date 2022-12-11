@@ -85,7 +85,7 @@ const collapseMotion = (
   name = 'ant-motion-collapse',
   style: Ref<CSSProperties>,
   className: Ref<string>,
-): CSSProperties => {
+): CSSMotionProps => {
   return {
     name,
     appear: true,
