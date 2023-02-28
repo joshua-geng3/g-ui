@@ -115,6 +115,7 @@ export default defineComponent<NoticeProps>({
           style={style as CSSProperties}
           onMouseenter={clearCloseTimer}
           onMouseleave={startCloseTimer}
+          onClick={onClick}
           {...dataOrAriaAttributeProps}
         >
           <div class={`${componentClass}-content`}>{slots.default?.()}</div>

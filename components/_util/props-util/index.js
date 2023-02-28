@@ -3,7 +3,7 @@ import classNames from '../classNames';
 import { isVNode, Fragment, Comment, Text, h } from 'vue';
 import { camelize, hyphenate, isOn, resolvePropValue } from '../util';
 import isValid from '../isValid';
-import initDefaultPros from './initDefaultProps';
+import initDefaultProps from './initDefaultProps';
 
 const splitAttrs = attrs => {
   const allAttrs = Object.keys(attrs);
@@ -422,7 +422,7 @@ export {
   getAttrs,
   getValueByProp,
   parseStyleText,
-  initDefaultPros,
+  initDefaultProps,
   isValidElement,
   camelize,
   getSlots,

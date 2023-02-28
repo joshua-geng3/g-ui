@@ -39,6 +39,7 @@
   "dependencies": {
     "@ant-design/colors": "^6.0.0",
     "@ant-design/icons-vue": "^6.1.0",
+    "@ctrl/tinycolor": "^3.5.0",
     "lodash-es": "^4.17.21",
     "vue-types": "^4.2.1"
   }
