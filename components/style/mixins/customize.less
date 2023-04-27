@@ -132,6 +132,49 @@
           }
 
           // ========================== Expandable ==========================
+          .@{table-prefix-cls}-expanded-row-fixed {
+            &::after {
+              border-right: @popover-border;
+            }
+          }
+
+          .@{table-prefix-cls}-footer {
+            border: @popover-border;
+          }
+        }
+        .@{table-prefix-cls}-filter-trigger-container-open {
+          background-color: #525252;
+        }
+      }
+
+      .@{calendar-prefix-cls}-full {
+        background-color: @background;
+        .@{calendar-picker-prefix-cls}-panel {
+          background-color: @background;
+          .@{calendar-prefix-cls}-date {
+            border-top: 2px solid @popover-customize-border-color;
+          }
+        }
+      }
+
+      .@{tab-prefix-cls} {
+        &.@{table-prefix-cls}-card .@{tab-prefix-cls}-card-bar .@{tab-prefix-cls}-tab-active {
+          background: @background;
+          border-bottom: @border-width-base solid @background;
+        }
+      }
+
+      .@{badge-prefix-cls} {
+        &-count {
+          box-shadow: 0 0 0 1px @background;
+        }
+      }
+
+      .@{tree-prefix-cls} {
+        &-show-line {
+          .@{tree-prefix-cls}-switcher {
+            background: @background;
+          }
         }
       }
     }
