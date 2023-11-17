@@ -87,6 +87,10 @@ export const configProviderProps = () => ({
     type: Function as PropType<(tableProps: TransformCellTextProps) => any>,
   },
   csp: {
+    type: Object as PropType<CSPConfig>,
+    default: undefined as CSPConfig,
+  },
+  input: {
     type: Object as PropType<{ autocomplete: string }>,
   },
   autoInsertSpaceInButton: { type: Boolean, default: undefined },
