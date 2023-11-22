@@ -32,7 +32,7 @@ export default {
       const event = this.$props[eventName] || this.$attrs[eventName];
       if (args.length && event) {
         if (Array.isArray(event)) {
-          for (let i = 0, l = event.length; i < l, i++) {
+          for (let i = 0, l = event.length; i < l; i++) {
             event[i](...args.slice(1));
           }
         } else {
