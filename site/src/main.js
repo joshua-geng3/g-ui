@@ -1,5 +1,5 @@
 import 'docsearch.js/dist/cdn/docsearch.css';
-import './index.less';
+// import './index.less';
 import 'nprogress/nprogress.css';
 import { createApp, Transition, TransitionGroup, version as vueVersion } from 'vue';
 import i18n from './i18n';

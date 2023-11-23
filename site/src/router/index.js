@@ -3,10 +3,6 @@ import demoRoutes from './demoRoutes';
 import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
   {
-    path: '/',
-    component: <h1>123</h1>,
-  },
-  {
     path: '/components',
     component: Layout,
     children: [
