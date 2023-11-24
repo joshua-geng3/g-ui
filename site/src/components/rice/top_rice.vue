@@ -4,7 +4,7 @@
       <a-carousel autoplay>
         <template v-for="ad in ads" :key="ad.href">
           <a :href="ad.href" target="_blank">
-            <img style="width: 100%; max-width: 1200px" :alt="ad.alt || ''" :src="ad.img" />
+            <img style="width: 100%; max-width: 1200px;" :alt="ad.alt || ''" :src="ad.img" />
           </a>
         </template>
       </a-carousel>
