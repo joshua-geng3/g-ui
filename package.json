@@ -46,6 +46,7 @@
     "@vue/eslint-config-typescript": "^9.0.0",
     "chalk": "^4.1.1",
     "codesandbox": "^2.2.3",
+    "date-fns": "^2.24.0",
     "diacritics": "^1.3.0",
     "docsearch.js": "^2.6.3",
     "escape-html": "^1.0.3",
