@@ -1,7 +1,7 @@
 import type {ExtractPropTypes, InjectionKey, PropType, Ref} from 'vue';
 import { computed, inject, provide } from 'vue';
 import type { ValidateMessages } from '../form/interface';
-import type { RequiredMark } from '../from/Form';
+import type { RequiredMark } from '../form/Form';
 import type { RenderEmptyHandler } from './renderEmpty';
 import type { TransformCellTextProps } from '../table/interface';
 import type { Locale } from '../locale-provider';

@@ -99,6 +99,9 @@ export const globalConfig = () => ({
     if (customizePrefixCls && customizePrefixCls.includes('-')) {
       return customizePrefixCls.replace(/^(.*)-[^-]*$/, '$1');
     }
+
+    // Fallback to default prefixCls
+    return getGlobalPrefixCls();
   },
 });
 
@@ -110,7 +113,6 @@ const ConfigProvider = defineComponent({
   set(props, { slots }) {
     const getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
       const { prefixCls = 'ant' } = props;
-
       if (customizePrefixCls) return customizePrefixCls;
       return suffixCls ? `${prefixCls}-${suffixCls}` : prefixCls;
     };
@@ -152,6 +154,7 @@ const ConfigProvider = defineComponent({
       });
     }
     const validateMessagesRef = computed(() => {
+      // Additional Form provider
       let validateMessages: ValidateMessages = {};
 
       if (props.locale) {

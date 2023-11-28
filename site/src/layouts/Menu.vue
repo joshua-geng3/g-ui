@@ -82,7 +82,7 @@ export default defineComponent({
           (pre, current) => [...pre, current, ...(current.children || [])],
           [{ path: '/components/overview', title: '组件总览', enTitle: 'Components Overview' }],
         );
-        const item = menus.findd(m => m.path === props.activeMenuItem);
+        const item = menus.find(m => m.path === props.activeMenuItem);
         let title = props.isZhCN
           ? 'Ant Design Vue - 一套企业级 Vue 组件库'
           : 'Ant Design Vue — An enterprise-class UI components based on Ant Design and Vue.js';

@@ -24,8 +24,20 @@
     "not dead",
     "not IE 11"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vueComponent/ant-design-vue.git"
+  },
   "author": "joshua-geng",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/ant-design-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/vueComponent/ant-design-vue/issues"
+  },
+  "homepage": "https://www.antdv.com/",
   "peerDependencies": {
     "vue": ">=3.2.0"
   },
@@ -108,5 +120,16 @@
     "es/**/style/*",
     "lib/**/style/*",
     "*.less"
-  ]
+  ],
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git",
+      "czConfig": "./scripts/commitizen.js"
+    }
+  },
+  "web-types": "vetur/web-types.json"
 }
