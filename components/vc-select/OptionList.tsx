@@ -15,7 +15,7 @@ import omit from '../_util/omit';
 import useBaseProps from './hooks/useBaseProps';
 import type { RawValueType } from './Select';
 import useSelectProps from './SelectContext';
-import type { ScrollConfig } from '../vc-vitrual-list/list';
+import type { ScrollConfig } from '../vc-virtual-list/List';
 
 export interface RefOptionListProps {
   onKeydown: (e?: KeyboardEvent) => void;
@@ -78,7 +78,7 @@ const OptionList = defineComponent({
       return -1;
     };
     const state = reactive({
-      activeIndex: getEnableActiveIndex(0);
+      activeIndex: getEnableActiveIndex(0),
     });
 
     const setActive = (index: number, fromKeyboard = false) => {
