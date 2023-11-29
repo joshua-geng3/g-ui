@@ -12,7 +12,7 @@ export default function useFrameWheel(
   inVirtual: Ref<boolean>,
   isScrollAtTop: Ref<boolean>,
   isScrollAtBottom: Ref<boolean>,
-  onWheelDelta: (offset: number) => number,
+  onWheelDelta: (offset: number) => void,
 ): [(e: WheelEvent) => void, (e: FireFoxDOMMouseScrollEvent) => void] {
   let offsetRef = 0;
   let nextFrame: number = null;
