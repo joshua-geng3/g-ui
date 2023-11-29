@@ -18,7 +18,7 @@ export function getCellFixedInfo(
   colEnd: number,
   columns: readonly { fixed?: FixedType }[],
   stickyOffsets: StickyOffsets,
-  direction: 'ltf' | 'rtl',
+  direction: 'ltr' | 'rtl',
 ): FixedInfo {
   const startColumn = columns[colStart] || {};
   const endColumn = columns[colEnd] || {};
