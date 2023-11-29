@@ -110,7 +110,7 @@ const ConfigProvider = defineComponent({
   name: 'AConfigProvider',
   inheritAttrs: false,
   props: configProviderProps(),
-  set(props, { slots }) {
+  setup(props, { slots }) {
     const getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
       const { prefixCls = 'ant' } = props;
       if (customizePrefixCls) return customizePrefixCls;

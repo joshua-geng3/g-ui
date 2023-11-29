@@ -21,10 +21,10 @@
 //
 // export type { BreadcrumbProps, BreadcrumbItemProps, BreadcrumbSeparatorProps } from './breadcrumb';
 // export { default as Breadcrumb, BreadcrumbItem, BreadcrumbSeparator } from './breadcrumb';
-//
-// export type { ButtonProps } from './button';
-// export { default as Button, ButtonGroup } from './button';
-//
+
+export type { ButtonProps } from './button';
+export { default as Button, ButtonGroup } from './button';
+
 // export type { CalendarProps } from './calendar';
 // export { default as Calendar } from './calendar';
 //
@@ -66,10 +66,10 @@ export { default as ConfigProvider } from './config-provider';
 //
 // export type { DividerProps } from './divider';
 // export { default as Divider } from './divider';
-//
-// export type { DropdownProps } from './dropdown';
-// export { default as Dropdown, DropdownButton } from './dropdown';
-//
+
+export type { DropdownProps } from './dropdown';
+export { default as Dropdown, DropdownButton } from './dropdown';
+
 // export type { DrawerProps } from './drawer';
 // export { default as Drawer } from './drawer';
 
@@ -80,10 +80,10 @@ export type { FormProps, FormItemProps, FormInstance, FormItemInstance } from '.
 export { default as Form, FormItem, FormItemRest } from './form';
 
 // export { default as Grid } from './grid';
-//
-// export type { InputProps, TextAreaProps } from './input';
-// export { default as Input, InputGroup, InputPassword, InputSearch, Textarea } from './input';
-//
+
+export type { InputProps, TextAreaProps } from './input';
+export { default as Input, InputGroup, InputPassword, InputSearch, Textarea } from './input';
+
 // export type { ImageProps } from './image';
 // export { default as Image, ImagePreviewGroup } from './image';
 //
@@ -105,15 +105,15 @@ export { default as Form, FormItem, FormItemRest } from './form';
 export type { MessageArgsProps } from './message';
 export { default as message } from './message';
 
-// export type {
-//   MenuProps,
-//   MenuTheme,
-//   SubMenuProps,
-//   MenuItemProps,
-//   MenuMode,
-//   MenuDividerProps,
-// } from './menu';
-// export { default as Menu, MenuDivider, MenuItem, MenuItemGroup, SubMenu } from './menu';
+export type {
+  MenuProps,
+  MenuTheme,
+  SubMenuProps,
+  MenuItemProps,
+  MenuMode,
+  MenuDividerProps,
+} from './menu';
+export { default as Menu, MenuDivider, MenuItem, MenuItemGroup, SubMenu } from './menu';
 //
 // export type { MentionsProps } from './mentions';
 // export { default as Mentions, MentionsOption } from './mentions';
@@ -150,13 +150,13 @@ export { default as notification } from './notification';
 //
 // export type { ResultProps } from './result';
 // export { default as Result } from './result';
-//
+
 // export type { RowProps } from './row';
 // export { default as Row } from './row';
-//
-// export type { SelectProps } from './select';
-// export { default as Select, SelectOptGroup, SelectOption } from './select';
-//
+
+export type { SelectProps } from './select';
+export { default as Select, SelectOptGroup, SelectOption } from './select';
+
 // export type {
 //   SkeletonProps,
 //   SkeletonButtonProps,

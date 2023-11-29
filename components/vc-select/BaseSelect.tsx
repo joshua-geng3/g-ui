@@ -15,7 +15,7 @@ import type {
   KeyboardEventHandler,
   MouseEventHandler,
 } from '../_util/EventInterface';
-import type { ScrollConfig, ScrollTo } from '../vc-virtual-list/list';
+import type { ScrollConfig, ScrollTo } from '../vc-virtual-list/List';
 import {
   computed,
   defineComponent,
@@ -37,7 +37,7 @@ import { toReactive } from '../_util/toReactive';
 import classNames from '../_util/classNames';
 import createRef from '../_util/createRef';
 import type { BaseOptionType } from './Select';
-import useInjectLegacySelectContext from '../vc-tree-select/LegacytContext';
+import useInjectLegacySelectContext from '../vc-tree-select/LegacyContext';
 import { cloneElement } from '../_util/vnode';
 import type { AlignType } from '../vc-trigger/interface';
 

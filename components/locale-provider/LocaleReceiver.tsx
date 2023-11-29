@@ -36,7 +36,8 @@ export default defineComponent({
     const localeData = inject<LocaleReceiverContext>('localeData', {});
     const locale = computed(() => {
       const { componentName = 'global', defaultLocale } = props;
-      const locale = defaultLocale || (defaultLocale as LocaleInterface)[componentName || 'global'];
+      const locale =
+        defaultLocale || (defaultLocaleData as LocaleInterface)[componentName || 'global'];
       const { antLocale } = localeData;
 
       const localeFromContext = componentName && antLocale ? antLocale[componentName] : {};
