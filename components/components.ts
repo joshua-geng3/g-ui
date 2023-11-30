@@ -42,10 +42,10 @@ export { default as Button, ButtonGroup } from './button';
 //
 // export type { CheckboxProps, CheckboxGroupProps, CheckboxOptionType } from './checkbox';
 // export { default as Checkbox, CheckboxGroup } from './checkbox';
-//
-// export type { ColProps } from './col';
-// export { default as Col } from './col';
-//
+
+export type { ColProps } from './col';
+export { default as Col } from './col';
+
 // export type { CommentProps } from './comment';
 // export { default as Comment } from './comment';
 
@@ -151,8 +151,8 @@ export { default as notification } from './notification';
 // export type { ResultProps } from './result';
 // export { default as Result } from './result';
 
-// export type { RowProps } from './row';
-// export { default as Row } from './row';
+export type { RowProps } from './row';
+export { default as Row } from './row';
 
 export type { SelectProps } from './select';
 export { default as Select, SelectOptGroup, SelectOption } from './select';

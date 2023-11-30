@@ -17,4 +17,27 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped></style>
+
+<style lang="less" scoped>
+@import '../../theme/static/theme.less';
+@import './index.less';
+
+#logo {
+  height: @header-height;
+  padding-left: 40px;
+  overflow: hidden;
+  color: @site-heading-color;
+  font-size: 18px;
+  font-family: Avenir, @font-family, sans-serif;
+  line-height: @header-height;
+  white-space: nowrap;
+  text-decoration: none;
+
+  img {
+    position: relative;
+    top: -1.5px;
+    height: 32px;
+    margin-right: 16px;
+  }
+}
+</style>

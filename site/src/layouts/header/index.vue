@@ -80,24 +80,8 @@ export default defineComponent({
     const colProps = isHome.value
       ? [{ flex: 'none' }, { flex: 'auto' }]
       : [
-          {
-            xxxl: 4,
-            xxl: 4,
-            xl: 5,
-            lg: 6,
-            md: 6,
-            sm: 24,
-            xs: 24,
-          },
-          {
-            xxxl: 20,
-            xxl: 20,
-            xl: 19,
-            lg: 18,
-            md: 18,
-            sm: 0,
-            xs: 0,
-          },
+          { xxxl: 4, xxl: 4, xl: 5, lg: 6, md: 6, sm: 24, xs: 24 },
+          { xxxl: 20, xxl: 20, xl: 19, lg: 18, md: 18, sm: 0, xs: 0 },
         ];
     const searching = ref(false);
     const onTriggerSearching = (value: boolean) => {
@@ -152,4 +136,9 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped></style>
+<style lang="less" src="./index.less"></style>
+<style scoped>
+.adblock-banner, .alert-banner {
+  position: relative;
+}
+</style>
