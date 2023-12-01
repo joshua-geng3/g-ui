@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-// import '../../components/style';
+import '../../components/style';
 import 'docsearch.js/dist/cdn/docsearch.css';
 import './index.less';
 import 'nprogress/nprogress.css';
