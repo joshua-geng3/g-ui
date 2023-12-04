@@ -9,12 +9,15 @@ import NProgress from 'nprogress';
 import router from './router';
 import Antd from 'ant-design-vue';
 import demoBox from './components/DemoBox.vue';
+import demoSort from './components/demoSort.jsx';
 import App from './App.vue';
 console.log('vue version: ', vueVersion);
 console.log('ant design vue version: ', Antd.version);
 const app = createApp(App);
 
 app.use(Antd);
+app.component('DemoBox', demoBox);
+app.component('DemoSort', demoSort);
 
 router.beforeEach((to, from, next) => {
   if (to.path !== from.path) {

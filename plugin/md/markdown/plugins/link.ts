@@ -2,7 +2,7 @@
 // 1. adding target="_blank" to external links
 // 2. normalize internal links to end with `.html`
 
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 import type { MarkdownParsedData } from '../markdown';
 import { URL } from 'url';
 
@@ -23,7 +23,7 @@ export const linkPlugin = (md: MarkdownIt, externalAttrs: Record<string, string>
       } else if (
         // internal anchor links
         !url.startsWith('#') &&
-        //mail links
+        // mail links
         !url.startsWith('mailto:')
       ) {
         normalizeHref(hrefAttr);
@@ -45,7 +45,7 @@ export const linkPlugin = (md: MarkdownIt, externalAttrs: Record<string, string>
       if (cleanUrl.endsWith('.md')) {
         cleanUrl = cleanUrl.replace(/\.md$/, '.html');
       }
-      // ./foo -> ./foo.html
+      // // ./foo -> ./foo.html
       // if (!cleanUrl.endsWith('.html') && !cleanUrl.endsWith('/')) {
       //   cleanUrl += '.html';
       // }

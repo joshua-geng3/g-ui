@@ -7,7 +7,7 @@
 //   3. <!--beforeend-->
 //   4. <!--afterend-->
 
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 import type { MarkdownParsedData } from '../markdown';
 
 export const preWrapperPlugin = (md: MarkdownIt) => {
@@ -23,6 +23,6 @@ export const preWrapperPlugin = (md: MarkdownIt) => {
       /<pre /g,
       `<pre class="language-${token.info?.trim()}" `,
     );
-    return rawCode; // `<div class="language-${token.info.trim()}">${rawCode}</div>`;
+    return rawCode; //`<div class="language-${token.info.trim()}">${rawCode}</div>`;
   };
 };

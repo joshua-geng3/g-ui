@@ -9,7 +9,7 @@ loadLanguages(['markup', 'css', 'javascript']);
 
 function wrap(code: string, lang: string): string {
   if (lang === 'text') {
-    code = escapeHtml(code)
+    code = escapeHtml(code);
   }
   return `<pre v-pre><code>${code}</code></pre>`;
 }
@@ -18,7 +18,7 @@ export const highlight = (str: string, lang: string) => {
   if (!lang) {
     return wrap(str, 'text');
   }
-  lang = lang.toString();
+  lang = lang.toLowerCase();
   const rawLang = lang;
   if (lang === 'vue' || lang === 'html') {
     lang = 'markup';

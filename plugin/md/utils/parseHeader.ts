@@ -22,18 +22,18 @@ const unescapeHtml = (html: string) =>
     .replace(/&#39;/g, "'")
     .replace(/&#x3A;/g, ':')
     .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
+    .replace(/&gt;/g, '>');
 
 const removeMarkdownTokens = (str: string) =>
   String(str)
-    .replace(/(\[(.[^\]]+)]\((.[^)]+)\))/g, '$2') // [] ()
+    .replace(/(\[(.[^\]]+)\]\((.[^)]+)\))/g, '$2') // []()
     .replace(/(`|\*{1,3}|_)(.*?[^\\])\1/g, '$2') // `{t}` | *{t}* | **{t}** | ***{t}*** | _{t}_
     // eslint-disable-next-line no-useless-escape
-    .replace(/(\\)(\*|_|`|\!|<|\$)/g, '$2')
+    .replace(/(\\)(\*|_|`|\!|<|\$)/g, '$2'); // remove escape char '\'
 
 const trim = (str = '') => str?.trim();
 
-// This method remove the raw HTML but reserve the HTML wrapped by  `<code>`.
+// This method remove the raw HTML but reserve the HTML wrapped by `<code>`.
 // e.g.
 // Input: "<a> b",   Output: "b"
 // Input: "`<a>` b", Output: "`<a>` b"

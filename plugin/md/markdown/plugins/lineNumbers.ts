@@ -1,7 +1,7 @@
 // markdown-it plugin for generating line numbers.
-// It depends an preWrapper plugin.
+// It depends on preWrapper plugin.
 
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 
 export const lineNumberPlugin = (md: MarkdownIt) => {
   const fence = md.renderer.rules.fence!;
@@ -16,8 +16,10 @@ export const lineNumberPlugin = (md: MarkdownIt) => {
 
     const lineNumbersWrapperCode = `<div class="line-numbers-wrapper">${lineNumbersCode}</div>`;
 
-    return rawCode
+    const finalCode = rawCode
       .replace(/<\/div>$/, `${lineNumbersWrapperCode}</div>`)
       .replace(/"(language-\w+)"/, '"$1 line-numbers-mode"');
+
+    return finalCode;
   };
 };

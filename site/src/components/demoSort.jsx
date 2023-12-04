@@ -1,5 +1,5 @@
 import { defineComponent, inject } from 'vue';
-import { GLOBAL_CONFIG } from '../SymbolKey.js';
+import { GLOBAL_CONFIG } from "../SymbolKey";
 
 export default defineComponent({
   props: {

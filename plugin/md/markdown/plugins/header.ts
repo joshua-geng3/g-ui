@@ -1,6 +1,6 @@
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 import type { MarkdownParsedData } from '../markdown';
-import { deeplyParseHeader } from "../../utils/parseHeader";
+import { deeplyParseHeader } from '../../utils/parseHeader';
 import { slugify } from './slugify';
 
 export const extractHeaderPlugin = (md: MarkdownIt, include = ['h2', 'h3']) => {
@@ -20,7 +20,6 @@ export const extractHeaderPlugin = (md: MarkdownIt, include = ['h2', 'h3']) => {
         content,
       });
     }
-    return self.renderToken(tokens, i, options)
+    return self.renderToken(tokens, i, options);
   };
 };
-

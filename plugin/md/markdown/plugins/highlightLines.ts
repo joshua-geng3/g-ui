@@ -1,5 +1,5 @@
 // Modified from https://github.com/egoist/markdown-it-highlight-lines
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 
 const RE = /{([\d,-]+)}/;
 const wrapperRE = /^<pre .*?><code>/;

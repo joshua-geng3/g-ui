@@ -1,17 +1,17 @@
-/* eslint-disable @typescript-eslint/no-var/requires */
-import MarkdownIt from "markdown-it";
+/* eslint-disable @typescript-eslint/no-var-requires */
+import MarkdownIt from 'markdown-it';
 import { parseHeader } from '../utils/parseHeader';
 import { highlight } from './plugins/highlight';
-import { slugify } from "./plugins/slugify";
-import { highlightLinePlugin } from "./plugins/highlightLines";
-import { lineNumberPlugin } from "./plugins/lineNumbers";
-import { componentPlugin } from "./plugins/component";
-import { containerPlugin } from "./plugins/containers";
-import { snippetPlugin } from "./plugins/snippet";
-import { hoistPlugin } from "./plugins/hoist";
-import { preWrapperPlugin } from "./plugins/preWrapper";
-import { linkPlugin } from "./plugins/link";
-import { extractHeaderPlugin } from "./plugins/header";
+import { slugify } from './plugins/slugify';
+import { highlightLinePlugin } from './plugins/highlightLines';
+import { lineNumberPlugin } from './plugins/lineNumbers';
+import { componentPlugin } from './plugins/component';
+import { containerPlugin } from './plugins/containers';
+import { snippetPlugin } from './plugins/snippet';
+import { hoistPlugin } from './plugins/hoist';
+import { preWrapperPlugin } from './plugins/preWrapper';
+import { linkPlugin } from './plugins/link';
+import { extractHeaderPlugin } from './plugins/header';
 import type { Header } from '../../shared';
 
 const emoji = require('markdown-it-emoji');
@@ -40,7 +40,7 @@ export interface MarkdownParsedData {
 
 export interface MarkdownRenderer {
   __data: MarkdownParsedData;
-  render: (src: string, env?: any) => { html: string; data: any};
+  render: (src: string, env?: any) => { html: string; data: any };
 }
 
 export const createMarkdownRenderer = (options: MarkdownOptions = {}): MarkdownRenderer => {
@@ -76,7 +76,7 @@ export const createMarkdownRenderer = (options: MarkdownOptions = {}): MarkdownR
       }),
       permalinkBefore: true,
       permalinkSymbol: '#',
-      permalinkAttrs: () => ({'aria-hidden': true}),
+      permalinkAttrs: () => ({ 'aria-hidden': true }),
       tabIndex: false,
       ...options.anchor,
     })

@@ -135,10 +135,10 @@ export { default as notification } from './notification';
 //
 // export type { PopconfirmProps } from './popconfirm';
 // export { default as Popconfirm } from './popconfirm';
-//
-// export type { PopoverProps } from './popover';
-// export { default as Popover } from './popover';
-//
+
+export type { PopoverProps } from './popover';
+export { default as Popover } from './popover';
+
 // export type { ProgressProps } from './progress';
 // export { default as Progress } from './progress';
 //

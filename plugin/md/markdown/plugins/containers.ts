@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import type MarkdownIt from "markdown-it";
-import type Token from "markdown-it/lib/token";
+import type MarkdownIt from 'markdown-it';
+import type Token from 'markdown-it/lib/token';
 
 const container = require('markdown-it-container');
 
@@ -20,7 +20,7 @@ type ContainerArgs = [
   string,
   {
     render(tokens: Token[], idx: number): string;
-  }
+  },
 ];
 
 function createContainer(klass: string, defaultTitle: string): ContainerArgs {
@@ -32,11 +32,13 @@ function createContainer(klass: string, defaultTitle: string): ContainerArgs {
         const token = tokens[idx];
         const info = token.info?.trim().slice(klass.length)?.trim();
         if (token.nesting === 1) {
-          return `<div class="${klass} custom-block"><p class="custom-block-title">${info || defaultTitle}</p>\n`;
+          return `<div class="${klass} custom-block"><p class="custom-block-title">${
+            info || defaultTitle
+          }</p>\n`;
         } else {
           return `</div>\n`;
         }
-      }
-    }
+      },
+    },
   ];
 }

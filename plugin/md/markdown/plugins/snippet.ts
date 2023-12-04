@@ -1,5 +1,5 @@
 import fs from 'fs';
-import type MarkdownIt from "markdown-it";
+import type MarkdownIt from 'markdown-it';
 import type { RuleBlock } from 'markdown-it/lib/parser_block';
 
 export const snippetPlugin = (md: MarkdownIt, root: string) => {
@@ -8,7 +8,7 @@ export const snippetPlugin = (md: MarkdownIt, root: string) => {
     const pos = state.bMarks[startLine] + state.tShift[startLine];
     const max = state.eMarks[startLine];
 
-    // if it's indented more than 3 spaces, it should ba a code block
+    // if it's indented more than 3 spaces, it should be a code block
     if (state.sCount[startLine] - state.blkIndent >= 4) {
       return false;
     }
@@ -26,7 +26,9 @@ export const snippetPlugin = (md: MarkdownIt, root: string) => {
     const end = state.skipSpacesBack(max, pos);
     const rawPath = state.src.slice(start, end)?.trim().replace(/^@/, root);
     const filename = rawPath.split(/{/).shift()?.trim();
-    const content = fs.existsSync(filename) ? fs.readFileSync(filename).toString() : 'Not found: ' + filename;
+    const content = fs.existsSync(filename)
+      ? fs.readFileSync(filename).toString()
+      : 'Not found: ' + filename;
     const meta = rawPath.replace(filename, '');
 
     state.line = startLine + 1;
