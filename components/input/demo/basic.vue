@@ -16,15 +16,19 @@ Basic usage example.
 
 </docs>
 <template>
-  <a-input v-model:value="value" placeholder="Basic usage" />
+  <a-input v-model:value="value" @change="onChange" placeholder="Basic usage" />
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 export default defineComponent({
   setup() {
     const value = ref<string>('');
+    const onChange = (e) => {
+      console.log(e);
+    };
     return {
       value,
+      onChange,
     };
   },
 });

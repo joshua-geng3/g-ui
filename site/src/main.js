@@ -10,12 +10,14 @@ import router from './router';
 import Antd from 'ant-design-vue';
 import demoBox from './components/DemoBox.vue';
 import demoSort from './components/demoSort.jsx';
+import clipboard from './directives/clipboard';
 import App from './App.vue';
 console.log('vue version: ', vueVersion);
 console.log('ant design vue version: ', Antd.version);
 const app = createApp(App);
 
 app.use(Antd);
+app.use(clipboard);
 app.component('DemoBox', demoBox);
 app.component('DemoSort', demoSort);
 
