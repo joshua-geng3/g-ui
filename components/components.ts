@@ -1,6 +1,6 @@
-// export type { AffixProps } from './affix';
-// export { default as Affix } from './affix';
-//
+export type { AffixProps } from './affix';
+export { default as Affix } from './affix';
+
 // export type { AnchorProps, AnchorLinkProps } from './anchor';
 // export { default as Anchor, AnchorLink } from './anchor';
 //
@@ -15,10 +15,10 @@
 //
 // export type { BackTopProps } from './back-top';
 // export { default as BackTop } from './back-top';
-//
-// export type { BadgeProps } from './badge';
-// export { default as Badge, BadgeRibbon } from './badge';
-//
+
+export type { BadgeProps } from './badge';
+export { default as Badge, BadgeRibbon } from './badge';
+
 // export type { BreadcrumbProps, BreadcrumbItemProps, BreadcrumbSeparatorProps } from './breadcrumb';
 // export { default as Breadcrumb, BreadcrumbItem, BreadcrumbSeparator } from './breadcrumb';
 
