@@ -57,7 +57,7 @@ export default defineComponent({
     onPopupVisibleChange: Function as PropType<(open: boolean) => void>,
     afterPopupVisibleChange: PropTypes.func.def(noop),
     popup: PropTypes.any,
-    popupStyle: { type: Object as PropType<CSSProperties>, default: undefined },
+    popupStyle: { type: Object as PropType<CSSProperties>, default: undefined as CSSProperties },
     prefixCls: PropTypes.string.def('rc-trigger-popup'),
     popupClassName: PropTypes.string.def(''),
     popupPlacement: String,
@@ -199,7 +199,7 @@ export default defineComponent({
       // https://github.com/react-component/calendar/issues/250
       // https://github.com/react-component/trigger/issues/50
       if (state.sPopupVisible) {
-        let currentDocument: any;
+        let currentDocument;
         if (!this.clickOutsideHandler && (this.isClickToHide() || this.isContextmenuToShow())) {
           currentDocument = props.getDocument(this.getRootDomNode());
           this.clickOutsideHandler = addEventListener(
@@ -317,7 +317,7 @@ export default defineComponent({
       this.fireEvents('onClick', event);
       // focus will trigger click
       if (this.focusTime) {
-        let preTime: number;
+        let preTime;
         if (this.preClickTime && this.preTouchTime) {
           preTime = Math.min(this.preClickTime, this.preTouchTime);
         } else if (this.preClickTime) {
@@ -624,7 +624,7 @@ export default defineComponent({
 
     isClickToShow() {
       const { action, showAction } = this.$props;
-      return action.indexOf('click') != -1 || showAction.indexOf('click')! == -1;
+      return action.indexOf('click') !== -1 || showAction.indexOf('click') !== -1;
     },
 
     isContextMenuOnly() {
@@ -710,7 +710,7 @@ export default defineComponent({
     if (this.isMouseEnterToShow()) {
       newChildProps.onMouseenter = this.onMouseenter;
       if (alignPoint) {
-        newChildProps.onMOusemove = this.onMouseMove;
+        newChildProps.onMousemove = this.onMouseMove;
       }
     } else {
       newChildProps.onMouseenter = this.createTwoChains('onMouseenter');
@@ -718,7 +718,7 @@ export default defineComponent({
     if (this.isMouseLeaveToHide()) {
       newChildProps.onMouseleave = this.onMouseleave;
     } else {
-      newChildProps.onMOuseleave = this.createTwoChains('onMouseleave');
+      newChildProps.onMouseleave = this.createTwoChains('onMouseleave');
     }
 
     if (this.isFocusToShow() || this.isBlurToHide()) {

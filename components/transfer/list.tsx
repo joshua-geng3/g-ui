@@ -202,7 +202,7 @@ export default defineComponent({
       prefixCls: string,
       searchPlaceholder: string,
       checkedKeys: string[],
-      renderList = Function,
+      renderList: Function,
       showSearch: boolean,
       disabled: boolean,
     ) => {

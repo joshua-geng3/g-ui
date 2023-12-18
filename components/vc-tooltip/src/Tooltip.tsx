@@ -18,7 +18,7 @@ export default defineComponent({
     transitionName: String,
     animation: PropTypes.any,
     afterVisibleChange: PropTypes.func.def(() => {}),
-    overlayStyle: { type: Object as PropType<CSSProperties>, default: undefined },
+    overlayStyle: { type: Object as PropType<CSSProperties>, default: undefined as CSSProperties },
     overlayClassName: String,
     prefixCls: PropTypes.string.def('rc-tooltip'),
     mouseEnterDelay: PropTypes.number.def(0.1),
