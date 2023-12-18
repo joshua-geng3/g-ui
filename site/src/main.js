@@ -18,6 +18,8 @@ const app = createApp(App);
 
 app.use(Antd);
 app.use(clipboard);
+app.component('Transition', Transition);
+app.component('TransitionGroup', TransitionGroup);
 app.component('DemoBox', demoBox);
 app.component('DemoSort', demoSort);
 

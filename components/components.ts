@@ -185,9 +185,9 @@ export { default as Select, SelectOptGroup, SelectOption } from './select';
 //
 // export type { StepProps, StepsProps } from './steps';
 // export { default as Steps, Step } from './steps';
-//
-// export type { SwitchProps } from './switch';
-// export { default as Switch } from './switch';
+
+export type { SwitchProps } from './switch';
+export { default as Switch } from './switch';
 
 export type {
   TableProps,
@@ -206,9 +206,9 @@ export {
   TableSummaryCell,
 } from './table';
 
-// export type { TransferProps } from './transfer';
-// export { default as Transfer } from './transfer';
-//
+export type { TransferProps } from './transfer';
+export { default as Transfer } from './transfer';
+
 // export type { TreeProps, DirectoryTreeProps } from './tree';
 // export { default as Tree, TreeNode, DirectoryTree } from './tree';
 //

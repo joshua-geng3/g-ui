@@ -1,13 +1,13 @@
 <template>
   <demo-sort :cols="1">
     <basic />
-    <oneway />
-    <search />
-    <advanced />
-    <custom-item />
-    <pagination />
-    <table-transfer />
-    <tree-transfer />
+<!--    <oneway />-->
+<!--    <search />-->
+<!--    <advanced />-->
+<!--    <custom-item />-->
+<!--    <pagination />-->
+<!--    <table-transfer />-->
+<!--    <tree-transfer />-->
   </demo-sort>
 </template>
 <script lang="ts">
