@@ -94,7 +94,7 @@ function warningProps(props: SelectProps) {
         return false;
       }
       if (type.isSelectOptGroup) {
-        const childs = node.children?.def() || [];
+        const childs = node.children?.default() || [];
         const allChildrenValid = childs.every((subNode: VNode) => {
           if (
             !isValidElement(subNode) ||

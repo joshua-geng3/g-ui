@@ -13,6 +13,14 @@ const routes = [
       ...demoRoutes,
     ],
   },
+  {
+    path: '/tooltip',
+    component: () => import('../../../components/tooltip/demo/basic.vue'),
+  },
+  {
+    path: '/select',
+    component: () => import('../../../components/select/demo/basic.vue'),
+  },
 ];
 
 export default createRouter({

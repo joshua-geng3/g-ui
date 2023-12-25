@@ -57,7 +57,7 @@ export const tooltipDefaultProps = () => ({
   autoAdjustOverflow: true,
 });
 
-export type TooltipProps = Partial<ExtractPropTypes<ReturnType<typeof tooltipDefaultProps>>>;
+export type TooltipProps = Partial<ExtractPropTypes<ReturnType<typeof tooltipProps>>>;
 
 export default defineComponent({
   compatConfig: { MODE: 3 },

@@ -1,4 +1,4 @@
-import type { CSSProperties, HTMLAttributes, PropType } from 'vue';
+import { CSSProperties, HTMLAttributes, PropType } from "vue";
 import { computed, defineComponent, inject, provide, ref } from 'vue';
 import PropTypes from '../_util/vue-types';
 import contains from '../vc-util/Dom/contains';
