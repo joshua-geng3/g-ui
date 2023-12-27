@@ -627,7 +627,7 @@ export default defineComponent({
     return () => {
       return (
         <BaseSelect
-          {...pickProps}
+          {...pickProps.value}
           {...attrs}
           // >>> MISC
           id={mergedId}
